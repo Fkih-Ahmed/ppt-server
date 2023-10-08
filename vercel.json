@@ -1,0 +1,7 @@
+{
+  "functions": {
+    "api/main.py": {
+      "memory": 128
+    }
+  }
+}
