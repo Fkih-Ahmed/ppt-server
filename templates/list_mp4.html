@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Converted MP4 Files</title>
+</head>
+<body>
+    <h1>Converted MP4 Files</h1>
+
+    <ul>
+        {% for mp4_file in mp4_files %}
+            <li><a href="/play/{{ mp4_file }}" target="_blank" type="video/mp4">{{ mp4_file }}</a></li>
+        {% endfor %}
+    </ul>
+
+    <form method="POST" action="/clear_all">
+        <input type="submit" value="Clear All Files">
+    </form>
+</body>
+</html>

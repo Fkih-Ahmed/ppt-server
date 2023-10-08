@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Conversione PPT in MP3</title>
+    <style>
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            margin: 20px;
+        }
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        .header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .form-container {
+            background-color: #f2f2f2;
+            padding: 20px;
+            border-radius: 10px;
+        }
+        .file-input {
+            display: block;
+            margin: 10px 0;
+        }
+        .button {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .button:hover {
+            background-color: #0056b3;
+        }
+        .file-list {
+            list-style: none;
+            padding: 0;
+        }
+        .file-list-item {
+            margin: 10px 0;
+            display: flex;
+            justify-content: space-between;
+        }
+        .audio-player {
+            width: 100%;
+            margin-top: 20px;
+        }
+    </style>
+    <script>
+        function showPopup() {
+            alert("Conversione completata!");
+            window.location.href = "/";
+        }
+    </script>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Conversione PPT in MP3</h1>
+        </div>
+        <div class="form-container">
+            <form method="POST" action="/convert" enctype="multipart/form-data">
+                <label for="file" class="file-input">Carica un file PowerPoint (.pptx):</label>
+                <input type="file" name="file" id="file" accept=".pptx" class="file-input">
+                <button type="submit" class="button">Converti</button>
+            </form>
+        </div>
+        <div class="audio-player">
+            <h2>File MP3 Convertiti:</h2>
+            <ul class="file-list">
+                {% for mp3_file in mp3_files %}
+                    <li class="file-list-item">
+                        <span>{{ mp3_file }}</span>
+                        <audio controls>
+                            <source src="/play/{{ mp3_file }}" type="audio/mpeg">
+                            Il tuo browser non supporta l'elemento audio.
+                        </audio>
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
+        <form method="POST" action="/clear_all">
+            <button type="submit" class="button">Cancella Tutti i File</button>
+        </form>
+    </div>
+</body>
+</html>

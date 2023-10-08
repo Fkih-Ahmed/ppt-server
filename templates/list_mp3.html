@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>PPT to MP3 Conversion</title>
+</head>
+<body>
+    <h1>PPT to MP3 Conversion</h1>
+
+    <form method="POST" action="/convert" enctype="multipart/form-data">
+        <label for="file">Upload a PowerPoint file (.pptx):</label>
+        <input type="file" name="file" id="file" accept=".pptx">
+        <input type="submit" value="Convert">
+    </form>
+
+    <form method="POST" action="/clear_all">
+        <input type="submit" value="Clear All Files">
+    </form>
+</body>
+</html>
